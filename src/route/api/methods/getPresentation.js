@@ -11,7 +11,13 @@ export function getPresentationRequest( req, res, next ) {
 
 export async function getPresentation( params ) {
   let { presentationId } = params;
-  let presentation = await models.Presentation.findByPrimary(presentationId, {
+  let presentation = await models.Presentation.findOne({
+    where: {
+      $or: {
+        id: presentationId,
+        shortKey: presentationId
+      }
+    },
     attributes: {
       exclude: [ 'qrCode' ]
     },

@@ -1,5 +1,6 @@
 export * from './createPresentation';
 export * from './getPresentation';
+export * from './getQrCode';
 export * from './addFiles';
 
 export * from './registerDevice';

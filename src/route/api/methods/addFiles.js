@@ -24,10 +24,13 @@ export async function addFiles( params ) {
   let newFiles = [];
   for (let i = 0; i < files.length; ++i) {
     newFiles.push(
-      await models.File.create( files[i] )
+      await models.File.create( {
+        fileName: files[i].fileName,
+        fileUrl: files[i].fileUrl
+      } )
     );
   }
-  await presentation.addFiles( newFiles );
+  await presentation.setFiles( newFiles );
   return presentation.update({
     name
   });
