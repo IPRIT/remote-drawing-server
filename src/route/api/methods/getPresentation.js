@@ -11,13 +11,14 @@ export function getPresentationRequest( req, res, next ) {
 
 export async function getPresentation( params ) {
   let { presentationId } = params;
+  let where = {};
+  if (Number.isFinite(presentationId)) {
+    where.id = presentationId;
+  } else {
+    where.shortKey = presentationId;
+  }
   let presentation = await models.Presentation.findOne({
-    where: {
-      $or: {
-        id: presentationId,
-        shortKey: presentationId
-      }
-    },
+    where,
     attributes: {
       exclude: [ 'qrCode' ]
     },

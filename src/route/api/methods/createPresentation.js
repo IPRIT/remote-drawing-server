@@ -13,6 +13,6 @@ export async function createPresentation( params ) {
   let {  } = params;
   return models.Presentation.create({
     qrCode: await utils.generateShaString(1 << 5),
-    shortKey: await utils.generateCryptoToken(1 << 2)
+    shortKey: parseInt(Math.random().toFixed(7).replace('0.', '')).toString(16)
   });
 }

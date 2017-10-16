@@ -69,7 +69,7 @@ export class SocketIoManager {
    * @param {string} eventName
    * @param {*} params
    */
-  emitChannelEvent(presentationId, eventName, params) {
+  emitChannelEvent(presentationId, eventName, params = {}) {
     this._io.to( this._getRoomChannel(presentationId) )
       .emit(eventName, params);
   }
@@ -80,8 +80,10 @@ export class SocketIoManager {
    * @private
    */
   _joinRoom(socket, params) {
-    let { presentationId } = params;
-    socket.join( this._getRoomChannel(presentationId) );
+    let { id } = params;
+    socket.join(this._getRoomChannel(id), _ => {
+      socket.emit('room.joined');
+    });
   }
 
   /**
