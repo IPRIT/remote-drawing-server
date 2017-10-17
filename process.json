@@ -1,6 +1,6 @@
 {
   "apps" : [{
-    "name": "api",
+    "name": "remote-drawing",
     "script": "./server.js",
     "exec_mode": "cluster",
     "max_memory_restart": "800M",
