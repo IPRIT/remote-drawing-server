@@ -12,6 +12,7 @@ import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import routing from './route';
 import './models';
+import cors from './route/cors';
 import { config } from './utils';
 import { ClientError, ServerError } from './route/error/http-error';
 
@@ -27,7 +28,7 @@ app.use(session({
   saveUninitialized: true
 }));
 
-app.use('/', routing);
+app.use('/', [cors], routing);
 
 app.use(ClientError);
 app.use(ServerError);
