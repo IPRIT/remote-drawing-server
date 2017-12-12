@@ -5,4 +5,5 @@ export * from './addFiles';
 
 export * from './registerDevice';
 export * from './setSlideNumber';
+export * from './clear';
 export * from './draw';

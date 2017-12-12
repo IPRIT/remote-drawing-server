@@ -11,6 +11,7 @@ router.get('/presentations/:presentationId/qr', methods.getQrCodeRequest);
 router.post('/presentations/:presentationId', methods.addFilesRequest);
 
 router.post('/presentations/:presentationId/slide/:number', methods.setSlideNumberRequest);
+router.post('/presentations/:presentationId/clear', methods.clearRequest);
 router.post('/presentations/:presentationId/draw', methods.drawRequest);
 
 export default router;
