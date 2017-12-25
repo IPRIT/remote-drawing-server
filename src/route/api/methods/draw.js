@@ -31,6 +31,7 @@ export async function draw( params ) {
   if (presentation.id != presentationId) {
     throw new HttpError('Presentation not found', 403);
   }
+  console.log('lineCode:', lineCode);
   let socketManager = SocketIoManager.getInstance();
   socketManager.emitChannelEvent( presentation.id, 'room.draw', {
     lineWidth,
